@@ -1,0 +1,29 @@
+.navbar {
+    height: 7vmin;
+    width: 100vw;
+    background-color: rgb(55,181,255);
+    text-align: center;
+    top: 0;
+    font-family: League Spartan;
+}
+
+.icon-cont{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 7vmin;
+    display: flex;
+    align-items: center;
+    font-size: 3vmin;
+}
+
+i {
+    margin-left: 2vmin;
+    color: yellow;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+

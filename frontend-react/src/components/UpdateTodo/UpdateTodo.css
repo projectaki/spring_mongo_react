@@ -1,0 +1,39 @@
+.modal-update {
+    background-color: #F8D512 !important;
+    width: 50vw;
+    height: 50vw;
+    text-align: center;
+    padding: 3vw;
+    padding-top: 0;
+    
+}
+
+.form {
+    height: 46vw;
+}
+.submit-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 4vmin;
+}
+
+.confirm-icon {
+    color: black;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.confirm-icon:hover {
+    cursor: pointer;
+    
+    color: #61FF33;
+}
+
+.name-input-cont {
+    padding-top: 5vmin;
+}

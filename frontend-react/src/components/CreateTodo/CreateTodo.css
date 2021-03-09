@@ -1,0 +1,60 @@
+.modal-create {
+    background-color: #F8D512 !important;
+    width: 50vw;
+    height: 50vw;
+    text-align: center;
+    padding: 3vw;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.form {
+    height: 41vw;
+    
+}
+.submit-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 4vmin;
+}
+
+.confirm-icon {
+    color: black;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.confirm-icon:hover {
+    cursor: pointer;
+    
+    color: #61FF33;
+}
+
+label {
+    background-color: black;
+    height: 5vmin;
+    width: 5vmin;
+    position: fixed;
+    right: 0;
+    margin-right: 1vmin;
+    margin-top: 1vmin;
+    box-shadow: 0 0 1vmin 0.3vmin black;
+    
+}
+
+input[type="color"] {
+    visibility: hidden;
+}
+
+.input-text {
+    margin: 0;
+}
+
+.name-input-cont {
+    padding-top: 5vmin;
+}

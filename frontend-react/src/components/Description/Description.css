@@ -1,0 +1,15 @@
+.desc-modal {
+    background-color: yellow !important;
+    width: 50vw;
+    height: 50vw;
+    text-align: center;
+    padding: 5vmin;
+}
+
+h1 {
+    font-size: 3vmin;
+}
+
+p {
+    font-size: 2vmin;
+}
