@@ -14,7 +14,7 @@
 	<name>todo</name>
 	<description>Fullstack project</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -59,7 +59,7 @@
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>1.6</version>
 				<configuration>
-					<workingDirectory>C:\Users\akias\Desktop\projectaki\Projects\spring_mongo_react\frontend-react</workingDirectory>
+					<workingDirectory>frontend-react</workingDirectory>
 					<installDirectory>target</installDirectory>
 				</configuration>
 				<executions>
@@ -102,7 +102,7 @@
 						<configuration>
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
-									<fileset dir="C:/Users/akias/Desktop/projectaki/Projects/spring_mongo_react/frontend-react/build"/>
+									<fileset dir="${project.basedir}/frontend-react/build"/>
 								</copy>
 							</target>
 						</configuration>
