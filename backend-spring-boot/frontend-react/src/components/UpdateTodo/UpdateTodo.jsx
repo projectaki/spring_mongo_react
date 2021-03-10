@@ -48,7 +48,7 @@ class UpdateTodo extends Component {
     async updateTodo() {
         const user = this.props.user;
         const todoid = this.props.todoid;
-        const defaultJson = {userId: user.sub, todoName: this.state.name, description: this.state.description};
+        const defaultJson = {userId: user.sub, todoName: this.state.name, description: this.state.description, color: this.props.color};
         await api.update(todoid, defaultJson);
     }
 

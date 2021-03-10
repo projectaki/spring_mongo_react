@@ -61,7 +61,9 @@ class TodoList extends Component {
 
                                                     <i data-target="modal-update" className="far fa-edit fa-1x modal-trigger" style={{color:"green"}} onClick={() => this.setState({currentTodoId: todo.id,
                                                                                                                                             currentTodoName: todo.todoName,
-                                                                                                                                            currentTodoDescription: todo.description})}></i>
+                                                                                                                                            currentTodoDescription: todo.description,
+                                                                                                                                            currentTodoColor: todo.color
+                                                                                                                                            })}></i>
                                                     <i className="far fa-window-close fa-1x" style={{color:"red"}} onClick={(e) => this.deleteThisTodo(todo.id,e)}></i>
                         
                                                 </div>
@@ -75,6 +77,7 @@ class TodoList extends Component {
                             todoid={this.state.currentTodoId}
                             todoname={this.state.currentTodoName}
                             tododescription={this.state.currentTodoDescription}
+                            color={this.state.currentTodoColor}
                             />
                 <Description description={this.state.currentTodoDescription}
                              name={this.state.currentTodoName}

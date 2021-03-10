@@ -9,34 +9,59 @@ class CreateTodo extends Component {
         this.state = { 
             name: "",
             description: "",
-            color: "#F8D512",
+            color: "black",
+            currentDivId: "blue",
+            toggle: false,
         };
     }
 
-    mySubmitHandler = (event) => {
-        event.preventDefault();
-        if (this.state.name.length > 30) {
-            alert("Maximum character for name is 30!")
-        }
+    componentDidMount() {
+       this.reloadDefaultText();
+    }
+
+    reloadDefaultText() {
+        const p1 = document.getElementById("create-p1");
+        const p2 = document.getElementById("create-p2");
+        p1.textContent = "Edit me to give a name for your todo note!";
+        p2.textContent = "Edit me to write a description for your todo note!";
+        this.setState({name: "Edit me to give a name for your todo note!", description: "Edit me to write a description for your todo note!" });
+    }
+
+    setParagraphState() {
+        const p1 = document.getElementById("create-p1");
+        const p2 = document.getElementById("create-p2");
+        this.setState({name: p1.textContent, description: p2.textContent });
+    }
+    
+
+    async submit() {
+        await this.setParagraphState();
+        if (this.state.name.length > 50 || this.state.name.length === 0 || this.state.description.length === 0) {
+            alert("Must be between 0 and 50 characters")
+        }   
         else {
             
             this.createTodo();
             this.closeModal();
+            this.reloadDefaultText();
+            console.log(this.state.name);
         }
         
     }
 
-    myChangeHandler = (evt) => {
-        
-        this.setState({ [evt.target.name]: evt.target.value });
+    async onChangeColor(id) {
+        console.log()
+        const newDiv = document.getElementById(id);
+        const lastDiv = document.getElementById(this.state.currentDivId);
+        lastDiv.style.boxShadow = "0 0 0 0 white";
+        newDiv.style.boxShadow = "0 0 1vmin 1vmin white";
+        this.setState({ color: newDiv.style.backgroundColor, currentDivId: id });
+        this.toggleColors();
     }
 
-    onChangeColor = (evt) => {
-        
-        this.setState({ color: evt.target.value });
-    }
-
-    
+    toggleColors() {
+        this.setState({toggle: !this.state.toggle});
+    }    
 
     closeModal() {
         const elem = document.getElementById("modal-create");
@@ -56,45 +81,26 @@ class CreateTodo extends Component {
 
         return (
             <div id="modal-create" className="modal modal-create">
-                <form onSubmit={this.mySubmitHandler} className="form">
-                        
-                        <label style={{backgroundColor: this.state.color}}>
-                            <input type="color"
-                                value={this.state.color}
-                                onChange={this.onChangeColor}
-                                
-                                />
-                                <p style={{margin: 0, position: "absolute", top: "1.2vmin", right: "1vmin", fontSize: "1.3vmin", color: "black"}}>color</p>
-                        </label>
-                    
-                    <div className="name-input-cont">
-                    <p style={{margin: 0}}>Todo Name:</p>
-                        <input
-                            type='text'
-                            name='name'
-                            onChange={this.myChangeHandler}
-                            defaultValue=""
-                            required
-                            autoComplete="off"
-                            className="input-text"
-                        />
+                    <div onClick={() => this.toggleColors()} style={{backgroundColor: this.state.color}} className="color-square"></div>
+                    {this.state.toggle && (
+                        <div className="color-picker-cont">
+                        <div id="blue" onClick={() => this.onChangeColor("blue")} style={{backgroundColor: "blue"}} className="color-block"></div>
+                        <div id="red" onClick={() => this.onChangeColor("red")} style={{backgroundColor: "red"}} className="color-block"></div>
+                        <div id="green" onClick={() => this.onChangeColor("green")} style={{backgroundColor: "green"}} className="color-block"></div>
+                        <div id="yellow" onClick={() => this.onChangeColor("yellow")} style={{backgroundColor: "yellow"}} className="color-block"></div>
+                        <div id="black" onClick={() => this.onChangeColor("black")} style={{backgroundColor: "black"}} className="color-block"></div>
                     </div>
-                    <div className="desc-input-cont">
-                    <p style={{margin: 0}}>Description:</p>
-                        <input
-                            type='text'
-                            name='description'
-                            onChange={this.myChangeHandler}
-                            defaultValue=""
-                            required
-                            autoComplete="off"
-                        />
-                    </div>
+                    )}
                     
-                    <button className="submit-btn"
-                        type='submit'
-                    ><i className="far fa-check-circle fa-1x confirm-icon"></i></button>
-                </form>
+
+                    <h1>Name:</h1>
+                    <p id="create-p1" contenteditable="true">Edit me to give a name for your todo note!</p>
+                    <h1>Description:</h1>
+                    <p id="create-p2" contenteditable="true">Edit me to write a description for your todo note!</p>
+                    
+                    
+                    <button onClick={() => this.submit()} className="submit-btn"><i className="far fa-check-circle fa-1x confirm-icon"></i></button>
+                
             </div>
         );
     }
