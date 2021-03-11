@@ -8,14 +8,18 @@ const Navbar = () => {
     const {  isAuthenticated } = useAuth0();
     return (
         <div className="navbar">
-            <h1 style={{margin: 0, fontSize: "3vmin", paddingTop: "2vmin", paddingBottom: "2vmin", fontFamily: "League Spartan"}}>Todo note board</h1>
+            <h1 className="nav-title" >Todo note board</h1>
             {isAuthenticated && (<div className="icon-cont">
                 <i data-target="modal-create" className="modal-trigger far fa-sticky-note fa-1x"></i>
             </div>)}
             
             
+            
+
             <LogoutButton/>
             <LoginButton/>
+           
+            
         </div>
     );
 };

@@ -10,7 +10,7 @@ class CreateTodo extends Component {
             name: "",
             description: "",
             color: "black",
-            currentDivId: "blue",
+            currentDivId: "black",
             toggle: false,
         };
     }
@@ -22,9 +22,9 @@ class CreateTodo extends Component {
     reloadDefaultText() {
         const p1 = document.getElementById("create-p1");
         const p2 = document.getElementById("create-p2");
-        p1.textContent = "Edit me to give a name for your todo note!";
-        p2.textContent = "Edit me to write a description for your todo note!";
-        this.setState({name: "Edit me to give a name for your todo note!", description: "Edit me to write a description for your todo note!" });
+        p1.textContent = "Edit me to give a name for your to-do note!";
+        p2.textContent = "Edit me to write a description for your to-do note!";
+        this.setState({name: "Edit me to give a name for your to-do note!", description: "Edit me to write a description for your to-do note!" });
     }
 
     setParagraphState() {
@@ -49,17 +49,18 @@ class CreateTodo extends Component {
         
     }
 
-    async onChangeColor(id) {
+    async onChangeColor(id,e) {
         console.log()
         const newDiv = document.getElementById(id);
         const lastDiv = document.getElementById(this.state.currentDivId);
         lastDiv.style.boxShadow = "0 0 0 0 white";
         newDiv.style.boxShadow = "0 0 1vmin 1vmin white";
         this.setState({ color: newDiv.style.backgroundColor, currentDivId: id });
-        this.toggleColors();
+        this.toggleColors(e);
     }
 
-    toggleColors() {
+    toggleColors(e) {
+        e.stopPropagation();
         this.setState({toggle: !this.state.toggle});
     }    
 
@@ -80,23 +81,23 @@ class CreateTodo extends Component {
     render() {
 
         return (
-            <div id="modal-create" className="modal modal-create">
-                    <div onClick={() => this.toggleColors()} style={{backgroundColor: this.state.color}} className="color-square"></div>
+            <div id="modal-create" className="modal modal-create" onClick={() => this.setState({toggle: false})}>
+                    <div onClick={(e) => this.toggleColors(e)} style={{backgroundColor: this.state.color}} className="color-square"></div>
                     {this.state.toggle && (
                         <div className="color-picker-cont">
-                        <div id="blue" onClick={() => this.onChangeColor("blue")} style={{backgroundColor: "blue"}} className="color-block"></div>
-                        <div id="red" onClick={() => this.onChangeColor("red")} style={{backgroundColor: "red"}} className="color-block"></div>
-                        <div id="green" onClick={() => this.onChangeColor("green")} style={{backgroundColor: "green"}} className="color-block"></div>
-                        <div id="yellow" onClick={() => this.onChangeColor("yellow")} style={{backgroundColor: "yellow"}} className="color-block"></div>
-                        <div id="black" onClick={() => this.onChangeColor("black")} style={{backgroundColor: "black"}} className="color-block"></div>
+                        <div id="#1399DC" onClick={(e) => this.onChangeColor("#1399DC",e)} style={{backgroundColor: "#1399DC"}} className="color-block"></div>
+                        <div id="#F98BE2" onClick={(e) => this.onChangeColor("#F98BE2",e)} style={{backgroundColor: "#F98BE2"}} className="color-block"></div>
+                        <div id="#50DC13" onClick={(e) => this.onChangeColor("#50DC13",e)} style={{backgroundColor: "#50DC13"}} className="color-block"></div>
+                        <div id="#F8D912" onClick={(e) => this.onChangeColor("#F8D912",e)} style={{backgroundColor: "#F8D912"}} className="color-block"></div>
+                        <div id="black" onClick={(e) => this.onChangeColor("black",e)} style={{backgroundColor: "black"}} className="color-block"></div>
                     </div>
                     )}
                     
 
-                    <h1>Name:</h1>
-                    <p id="create-p1" contenteditable="true">Edit me to give a name for your todo note!</p>
-                    <h1>Description:</h1>
-                    <p id="create-p2" contenteditable="true">Edit me to write a description for your todo note!</p>
+                    <h1 className="modal-title" style={{paddingTop: "5vh"}}>Name:</h1>
+                    <p id="create-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
+                    <h1 className="modal-title">Description:</h1>
+                    <p id="create-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
                     
                     
                     <button onClick={() => this.submit()} className="submit-btn"><i className="far fa-check-circle fa-1x confirm-icon"></i></button>

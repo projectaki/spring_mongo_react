@@ -13,20 +13,32 @@ class UpdateTodo extends Component {
 
     } 
 
-    componentDidUpdate(oldProps) {
+    async componentDidUpdate(oldProps) {
         
         const newProps = this.props
         if(oldProps.todoid !== newProps.todoid ) {
-          this.setState({name: this.props.todoname, description: this.props.tododescription})
+            const p1 = document.getElementById("update-p1");
+            const p2 = document.getElementById("update-p2");
+            await this.setState({name: this.props.todoname, description: this.props.tododescription});
+            p1.textContent = this.state.name;
+            p2.textContent = this.state.description;
         }
         
-      }
+    }
 
-    mySubmitHandler = (event) => {
-        event.preventDefault();
-        if (this.state.name.length > 30) {
-            alert("Maximum character for name is 30!");
-        }
+    setParagraphState() {
+        const p1 = document.getElementById("update-p1");
+        const p2 = document.getElementById("update-p2");
+        this.setState({name: p1.textContent, description: p2.textContent });
+        
+    }
+    
+
+    async submit() {
+        await this.setParagraphState();
+        if (this.state.name.length > 50 || this.state.name.length === 0 || this.state.description.length === 0) {
+            alert("Must be between 0 and 50 characters")
+        }   
         else {
             
             this.updateTodo();
@@ -35,9 +47,6 @@ class UpdateTodo extends Component {
         
     }
 
-    myChangeHandler = (evt) => {
-        this.setState({ [evt.target.name]: evt.target.value });
-    }
 
     closeModal() {
         const elem = document.getElementById("modal-update");
@@ -56,32 +65,13 @@ class UpdateTodo extends Component {
         
         return (
             <div id="modal-update" className="modal modal-update">
-                <form onSubmit={this.mySubmitHandler}>
-                    <p className="name-input-cont" style={{margin: 0}}>Todo Name:</p>
-                    <input
-                        type='text'
-                        name='name'
-                        onChange={this.myChangeHandler}
-                        value={this.state.name}
-                        required
-                        autoComplete="off"
-                        
-                        
-                    />
-                    <p style={{margin: 0}}>Description:</p>
-                    <input
-                        type='text'
-                        name='description'
-                        onChange={this.myChangeHandler}
-                        value={this.state.description}
-                        required
-                        autoComplete="off"
-                        
-                    />
-                    <button className="submit-btn"
-                        type='submit'
-                    ><i className="far fa-check-circle fa-1x confirm-icon"></i></button>
-                </form>
+               <h1 className="modal-title" style={{paddingTop: "5vh"}}>Name:</h1>
+                    <p id="update-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
+                    <h1 className="modal-title">Description:</h1>
+                    <p id="update-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
+                    
+                    
+                    <button onClick={() => this.submit()} className="submit-btn"><i className="far fa-check-circle fa-1x confirm-icon"></i></button>
             </div>
         );
     }

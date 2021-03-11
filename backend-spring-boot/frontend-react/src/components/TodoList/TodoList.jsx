@@ -50,8 +50,8 @@ class TodoList extends Component {
                                                                                                                                             currentTodoDescription: todo.description})}>
                             <img src={pinIMG} style={{position: "absolute", height:"4vmin", top:0}}/>
                                                 <div className="todo-item-name">
-                                                    
-                                                     {todo.todoName}
+                                                    <p className="note-text">{todo.todoName}</p>
+                                                     
                                                     
                                                     
                                                 </div>
@@ -59,7 +59,7 @@ class TodoList extends Component {
                                                     
                                                 <div className="todo-item-btn-cont">
 
-                                                    <i data-target="modal-update" className="far fa-edit fa-1x modal-trigger" style={{color:"green"}} onClick={() => this.setState({currentTodoId: todo.id,
+                                                    <i data-target="modal-update" className="far fa-edit fa-1x modal-trigger" style={{color:"white"}} onClick={() => this.setState({currentTodoId: todo.id,
                                                                                                                                             currentTodoName: todo.todoName,
                                                                                                                                             currentTodoDescription: todo.description,
                                                                                                                                             currentTodoColor: todo.color

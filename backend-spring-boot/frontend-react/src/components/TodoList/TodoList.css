@@ -14,43 +14,80 @@
 }
 
 .todo-container {
-    padding: 10vmin;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 4vmin;
-    justify-content: center;
-    position: relative;
+    gap: 4vw;
+    row-gap: 2vw;
+    
+
 }
 
 .todo-item {
 
-    display: flex;
     position: relative;
-    height: 14vw;
-    width: 14vw;
-    padding: 2vmin;
-    padding-bottom: 3vmin;
-    align-items: center;
-    justify-content: center;
-    
+    height: 14.5vw;
+    width: 14.5vw;
+    padding-top: 4vmin;
+    padding-bottom: 4vmin;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
     box-shadow: 1vmin 1vmin 2vmin;
-    white-space: normal;
-    
-
     transition: 250ms ease-in;
 }
+
+@media only screen and (max-width: 500px) {
+    .todo-container {
+        padding-top: 12vw;
+        padding-bottom: 12vw;
+        padding-left: 8vw;
+        padding-right: 8vw;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6vw;
+        row-gap: 2vw;
+        
+    
+    }
+    
+    .todo-item {
+    
+        position: relative;
+        height: 29vw;
+        width: 29vw;
+        padding-top: 4vmin;
+        padding-bottom: 4vmin;
+        padding-left: 2vmin;
+        padding-right: 2vmin;
+        box-shadow: 1vmin 1vmin 2vmin;
+        transition: 250ms ease-in;
+    }
+
+    .note-text {
+
+        font-size: 3.5vmin !important;
+        height: calc(29vw - 8vmin) !important;
+        overflow: scroll;
+    }
+  }
 
 .todo-item:hover {
     cursor: pointer;
     background-color: lightgrey;
 }
 
-.todo-item-name {
+
+.note-text {
     
+    color: white;
     font-size: 2vmin;
-    word-wrap: break-word;
-    overflow: hidden;
     text-align: center;
+    margin: 0;
+    height: calc(14.5vw - 8vmin);
+    overflow: hidden;
 }
 
 .todo-item-btn-cont {
