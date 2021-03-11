@@ -20,8 +20,7 @@
     padding-right: 5vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 4vw;
-    row-gap: 2vw;
+
     
 
 }
@@ -37,6 +36,7 @@
     padding-right: 2vmin;
     box-shadow: 1vmin 1vmin 2vmin;
     transition: 250ms ease-in;
+    margin: 1.5vw;
 }
 
 @media only screen and (max-width: 500px) {
@@ -47,8 +47,6 @@
         padding-right: 8vw;
         display: flex;
         flex-wrap: wrap;
-        gap: 6vw;
-        row-gap: 2vw;
         
     
     }
@@ -56,14 +54,15 @@
     .todo-item {
     
         position: relative;
-        height: 29vw;
-        width: 29vw;
+        height: 27vw;
+        width: 27vw;
         padding-top: 4vmin;
         padding-bottom: 4vmin;
         padding-left: 2vmin;
         padding-right: 2vmin;
         box-shadow: 1vmin 1vmin 2vmin;
         transition: 250ms ease-in;
+        
     }
 
     .note-text {
