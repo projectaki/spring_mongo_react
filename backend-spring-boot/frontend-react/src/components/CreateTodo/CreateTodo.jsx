@@ -19,6 +19,11 @@ class CreateTodo extends Component {
        this.reloadDefaultText();
     }
 
+    clearParagraph(id) {
+        const p1 = document.getElementById(id);
+        p1.textContent = "";
+    }
+
     reloadDefaultText() {
         const p1 = document.getElementById("create-p1");
         const p2 = document.getElementById("create-p2");
@@ -95,9 +100,9 @@ class CreateTodo extends Component {
                     
 
                     <h1 className="modal-title" style={{paddingTop: "5vh"}}>Name:</h1>
-                    <p id="create-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
+                    <p onClick={() => this.clearParagraph("create-p1")} id="create-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
                     <h1 className="modal-title">Description:</h1>
-                    <p id="create-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
+                    <p onClick={() => this.clearParagraph("create-p2")} id="create-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
                     
                     
                     <button onClick={() => this.submit()} className="submit-btn"><i className="far fa-check-circle fa-1x confirm-icon"></i></button>

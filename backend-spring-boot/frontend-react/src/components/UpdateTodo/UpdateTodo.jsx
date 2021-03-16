@@ -26,6 +26,11 @@ class UpdateTodo extends Component {
         
     }
 
+    clearParagraph(id) {
+        const p1 = document.getElementById(id);
+        p1.textContent = "";
+    }
+
     setParagraphState() {
         const p1 = document.getElementById("update-p1");
         const p2 = document.getElementById("update-p2");
@@ -66,9 +71,9 @@ class UpdateTodo extends Component {
         return (
             <div id="modal-update" className="modal modal-update">
                <h1 className="modal-title" style={{paddingTop: "5vh"}}>Name:</h1>
-                    <p id="update-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
+                    <p onClick={() => this.clearParagraph("update-p1")} id="update-p1" contenteditable="true">Edit me to give a name for your to-do note!</p>
                     <h1 className="modal-title">Description:</h1>
-                    <p id="update-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
+                    <p onClick={() => this.clearParagraph("update-p2")} id="update-p2" contenteditable="true">Edit me to write a description for your to-do note!</p>
                     
                     
                     <button onClick={() => this.submit()} className="submit-btn"><i className="far fa-check-circle fa-1x confirm-icon"></i></button>

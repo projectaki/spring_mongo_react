@@ -12,9 +12,11 @@
 	<artifactId>todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>todo</name>
+	<url>https://github.com/projectaki/todo-notes-app</url>
 	<description>Fullstack project</description>
 	<properties>
 		<java.version>8</java.version>
+		<github.global.server>github</github.global.server>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -95,6 +97,38 @@
 			</plugin>
 
 			<plugin>
+				<!-- Deploy the web site -->
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.12</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+						<configuration>
+							<!-- Make sure you have authentication for this server on .m2/settings.xml -->
+							<server>github</server>
+							<message>Building site for my project</message>
+							<merge>true</merge>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.8.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+
+			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
@@ -116,5 +150,11 @@
 
 		</plugins>
 	</build>
+
+	<scm>
+		<url>https://github.com/projectaki/todo-notes-app</url>
+		<connection>scm:git:git@github.com:projectaki/todo-notes-app.git</connection>
+		<developerConnection>scm:git:git@github.com:projectaki/todo-notes-app.git</developerConnection>
+	</scm>
 
 </project>

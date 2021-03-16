@@ -4,13 +4,8 @@ import "./LogoutButton.css";
 
 const LogoutButton = () => {
     const { logout, isAuthenticated } = useAuth0();
-    return (
-        isAuthenticated && (
-            <div className="btn-cont">
-                <span onClick={() => logout()}>Logout</span>
-            </div>
-        )
-        
+    return ( 
+            isAuthenticated && (<div className="btn-text" onClick={() => logout()}>Logout</div>)
     );
 };
 

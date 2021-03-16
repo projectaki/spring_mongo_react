@@ -5,11 +5,7 @@ import "./LoginButton.css";
 const LoginButton = () => {
     const { loginWithRedirect, isAuthenticated } = useAuth0();
     return (
-        !isAuthenticated && (
-            <div className="btn-cont">
-                <span onClick={() => loginWithRedirect()}>Login</span>
-            </div>
-            
+        !isAuthenticated && (<div className="btn-text" onClick={() => loginWithRedirect()}>Login / Sign up</div>  
         )
         
     );

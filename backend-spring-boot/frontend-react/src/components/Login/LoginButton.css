@@ -1,18 +1,14 @@
-span {
-    top: 0;
-    right: 0;
-    font-size: 2vmin;
-    margin-right: 2vmin;
-    position: relative;
+.btn-text {
+    font-size: 1em;
     transition: transform 250ms ease-in-out;
 }
 
-span:hover {
+.btn-text:hover {
     cursor: pointer;
     transform: scale(1.2);
 }
 
-span::after {
+.btn-text::after {
     content: "";
     position: absolute;
     left: 0;
@@ -26,17 +22,8 @@ span::after {
     transition: transform 250ms ease-in;
 }
 
-span:hover::after {
+.btn-text:hover::after {
     transform: scale(1);
     transform-origin: left;
 }
 
-
-.btn-cont {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 7vmin;
-    display: flex;
-    align-items: center;
-}
